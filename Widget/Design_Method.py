@@ -1,8 +1,7 @@
-
 """
-Auswahl von DesignTyp,FilterMethode und Window 
-@author: juliabeike
-Datum:12.11.2013
+Auswahl von DesignTyp,FilterMethode 
+@author: Julia Beike
+Datum:14.11.2013
 """
 import sys
 from PyQt4 import QtGui
@@ -20,99 +19,85 @@ class Design_Method(QtGui.QWidget):
         self.design_filter=""
     
       
-        self.list_DesignType=["IIR","FIR"]
-        self.list_FilterMethod_IIR=["PY_DESIGN","MANUAL"]
-        self.list_FilterWindow_IIR=['ellip','cheby1','cheby2','butter','bessel']
-        self.list_FilterMethod_FIR=['WIN','WIN2','REMEZ','MANUAL']
-        self.list_FilterWindow_FIR=['boxcar', 'hann', 'bartlett', 'nuttall']
+        
+        self.list_FilterMethod_IIR=["Butterworth","Chebyshev","Elliptic"]
+
+        self.list_FilterMethod_FIR=['Equiripple','Least-squares','Window']
+        
 
 
 
         """
-        Combobox zur Auswahl des Filtertyps        
+        Radio Buttons zur Auswahl des Filtertyps        
         """
-        self.combo_DesignType=QtGui.QComboBox(self)
-        self.combo_DesignType.addItems(self.list_DesignType)
+       
         
-        
-        
-        """
-        Combobox zur Auswahl des Filtermethode       
-        """
-        
-        self.combo_FilterMethod=QtGui.QComboBox(self)
-        self.combo_FilterMethod.addItems(self.list_FilterMethod_IIR)
-        self.combo_FilterMethod.setEnabled(False)
+       # self.group.exclusive(True)
+        self.radio_FIR=QtGui.QRadioButton("FFT",self)
+        self.radio_IIR=QtGui.QRadioButton("IIR",self)
+        self.radio_FIR.setChecked(True)
+        self.group=QtGui.QButtonGroup()
+        self.group.addButton(self.radio_FIR)
+        self.group.addButton(self.radio_IIR)
         
         """
-        Combobox zur Auswahl des Window       
+        Combobox zur Auswahl des Filtermethode FFT       
         """
         
-        self.combo_FilterWindow=QtGui.QComboBox(self)
-        self.combo_FilterWindow.addItems(self.list_FilterWindow_IIR)
-        self.combo_FilterWindow.setVisible(False)
+        self.combo_FilterMethod_FIR=QtGui.QComboBox(self)
+        self.combo_FilterMethod_FIR.addItems(self.list_FilterMethod_FIR)
 
+        
+        
+        """
+        Combobox zur Auswahl des Filtermethode IRR       
+        """
+        
+        self.combo_FilterMethod_IIR=QtGui.QComboBox(self)
+        self.combo_FilterMethod_IIR.addItems(self.list_FilterMethod_IIR)
+     
+        
         """
         SIGNALE       
         """
 
-        self.connect(self.combo_DesignType,SIGNAL('activated(QString)'),self.sel_DesignType)
-        self.connect(self.combo_FilterMethod,SIGNAL('activated(QString)'),self.sel_FilterMethod)
+        self.connect(self.combo_FilterMethod_FIR,SIGNAL('activated(QString)'),self.sel_FilterMethod_FIR)
+
+        self.connect(self.combo_FilterMethod_IIR,SIGNAL('activated(QString)'),self.sel_FilterMethod_IIR)
         
         """
         LAYOUT      
         """
-        layout=QtGui.QVBoxLayout()
-        layout.addWidget(self.combo_DesignType)
-        layout.addWidget(self.combo_FilterMethod)
-        layout.addWidget(self.combo_FilterWindow)       
-    
+        layout_FIR=QtGui.QHBoxLayout()
+        layout_FIR.addWidget(self.radio_FIR)
+        layout_FIR.addWidget(self.combo_FilterMethod_FIR)
+        layout_IIR=QtGui.QHBoxLayout()
+        layout_IIR.addWidget(self.radio_IIR)
+        layout_IIR.addWidget(self.combo_FilterMethod_IIR)
+        layout=QtGui.QGridLayout()
+        layout.addWidget(self.radio_FIR,0,0)
+        layout.addWidget(self.radio_IIR,1,0)
+        layout.addWidget(self.combo_FilterMethod_FIR,0,1)
+        layout.addWidget(self.combo_FilterMethod_IIR,1,1)
         self.setLayout(layout)
         
         
-    def sel_DesignType(self):
-        text=self.combo_DesignType.currentText()
-        print text
-        if text=="IIR":
-            self.combo_FilterMethod.clear()
-            self.combo_FilterMethod.addItems(self.list_FilterMethod_IIR)
-            self.combo_FilterMethod.setEnabled(True)
-        if text=="FIR":
-            self.combo_FilterMethod.clear()
-            self.combo_FilterMethod.addItems(self.list_FilterMethod_FIR)
-            self.combo_FilterMethod.setEnabled(True)
+    def sel_FilterMethod_FIR(self):
+       
+   
+        self.radio_FIR.setChecked(True)
         
-        self.combo_FilterWindow.setVisible(False)
+    def sel_FilterMethod_IIR(self):
+        
+    
+        self.radio_IIR.setChecked(True)    
    
  
-    def sel_FilterMethod(self):
-        text=self.combo_FilterMethod.currentText()
-        print text
-   
-        if text=="PY_DESIGN":
-            self.combo_FilterWindow.clear()
-            self.combo_FilterWindow.addItems(self.list_FilterWindow_IIR)
-            self.combo_FilterWindow.setVisible(True)
-        elif text=='WIN2'or text=='WIN':
-            self.combo_FilterWindow.clear()
-            self.combo_FilterWindow.addItems(self.list_FilterWindow_FIR)
-            self.combo_FilterWindow.setVisible(True)
-        else:
-            #print "Unsichtbar"
-            self.combo_FilterWindow.setVisible(False)
-  
-  
-         
+    
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     form = Design_Method()
     form.show()
+   
     app.exec_()
 
-
-   
-        
-
-
-
- 
