@@ -47,7 +47,7 @@ class ResponseType(QtGui.QWidget):
         layout.addWidget(self.radio_LP,1,0)
         layout.addWidget(self.radio_BP,2,0)
         layout.addWidget(self.radio_BS,3,0)
-        layout.s
+      
         self.setLayout(layout)
         
         

@@ -33,7 +33,7 @@ class Design_Method(QtGui.QWidget):
        
         
        # self.group.exclusive(True)
-        self.radio_FIR=QtGui.QRadioButton("FFT",self)
+        self.radio_FIR=QtGui.QRadioButton("FIR",self)
         self.radio_IIR=QtGui.QRadioButton("IIR",self)
         self.radio_FIR.setChecked(True)
         self.group=QtGui.QButtonGroup()

@@ -27,7 +27,8 @@ class FilterOrder(QtGui.QWidget):
         self.group.setExclusive(True)
         self.txtManual=QtGui.QLineEdit("10",self)
         self.txtManual.setEnabled(False)
-
+        self.chekManual.setChecked(True)
+       
    
         """
         LAYOUT 
@@ -42,6 +43,15 @@ class FilterOrder(QtGui.QWidget):
     
         self.setLayout(layout)
         
+        self.connect(self.chekManual,SIGNAL('clicked()'),self.enabled_txt)
+        self.connect(self.chekMinimal,SIGNAL('clicked()'),self.enabled_txt)
+        
+    def enabled_txt(self):
+
+        if self.chekManual.isChecked()==True:
+            self.txtManual.setEnabled(True)
+        else:
+            self.txtManual.setEnabled(False)     
         
 
          
