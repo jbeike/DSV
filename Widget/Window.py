@@ -15,22 +15,22 @@ class Window(QtGui.QWidget):
     def __init__(self):
         super(Window, self).__init__()        
         self.initUI()
-        self.chose_design_list=(['Least-squares','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],False,True],
-                               ['Least-squares','HP',['Fs','Fstop','Fpass'],[48000,9600,12000],False,True],
-                               ['Least-squares','BP',['Fs','Fstop1','Fpass1','Fstop2','Fpass2'],[48000,7200,9600,12000,14400],False,True],
-                               ['Least-squares','BS',['Fs','Fpass1','Fstop1','Fpass2','Fstop2'],[48000,7200,9600,12000,14400],False,True],
-                               ['Equiripple','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],True,True],
-                               ['Equiripple','HP',['Fs','Fstop','Fpass'],[48000,9600,12000],True,True],
-                               ['Equiripple','BP',['Fs','Fstop1','Fpass1','Fstop2','Fpass2'],[48000,7200,9600,12000,14400],True,True],
-                               ['Equiripple','BS',['Fs','Fpass1','Fstop1','Fpass2','Fstop2'],[48000,7200,9600,12000,14400],True,True],      
-                               ['Window','LP',['Fs','Fc'],[48000,10800],False,True],
-                               ['Window','HP',['Fs','Fc'],[48000,10800],False,True],
-                               ['Window','BP',['Fs','Fc1','Fc2'],[48000,8400,13200],False,True],
-                               ['Window','BS',['Fs','Fc1','Fc2'],[48000,8400,13200],False,True], 
-                               ['Butterworth','LP',['Fs','Fc'],[48000,10800],True,True],
-                               ['Butterworth','HP',['Fs','Fc'],[48000,10800],True,True],
-                               ['Butterworth','BP',['Fs','Fc1','Fc2'],[48000,8400,13200],True,True],
-                               ['Butterworth','BS',['Fs','Fc1','Fc2'],[48000,8400,13200],True,True],
+        self.chose_design_list=(['Least-squares','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],False,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]],
+                               ['Least-squares','HP',['Fs','Fstop','Fpass'],[48000,9600,12000],False,True,"tb",["Enter a weight value for each band below",["Wstop","Wpass"],[1,1]]],
+                               ['Least-squares','BP',['Fs','Fstop1','Fpass1','Fstop2','Fpass2'],[48000,7200,9600,12000,14400],False,True,"tb",["Enter a weight value for each band below",["Wstop1","Wpass","Wstop2"],[1,1,1]]],
+                               ['Least-squares','BS',['Fs','Fpass1','Fstop1','Fpass2','Fstop2'],[48000,7200,9600,12000,14400],False,True,"tb",["Enter a weight value for each band below",["Wpass1","Wstop","Wpass2"],[1,1,1]]],
+                               ['Equiripple','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],True,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]],
+                               ['Equiripple','HP',['Fs','Fstop','Fpass'],[48000,9600,12000],True,True,False,True,"tb",["Enter a weight value for each band below",["Wstop","Wpass"],[1,1]]],
+                               ['Equiripple','BP',['Fs','Fstop1','Fpass1','Fstop2','Fpass2'],[48000,7200,9600,12000,14400],True,True,"tb",["Enter a weight value for each band below",["Wstop1","Wpass","Wstop2"],[1,1,1]]],
+                               ['Equiripple','BS',['Fs','Fpass1','Fstop1','Fpass2','Fstop2'],[48000,7200,9600,12000,14400],True,True,"tb",["Enter a weight value for each band below",["Wpass1","Wstop","Wpass2"],[1,1,1]]],      
+                               ['Window','LP',['Fs','Fc'],[48000,10800],False,True,"txt","The attenuation at cutoff frequencies is fixed at 6 dB (half the passband gain)"],
+                               ['Window','HP',['Fs','Fc'],[48000,10800],False,True,"txt","The attenuation at cutoff frequencies is fixed at 6 dB (half the passband gain)"],
+                               ['Window','BP',['Fs','Fc1','Fc2'],[48000,8400,13200],False,True,"txt","The attenuation at cutoff frequencies is fixed at 6 dB (half the passband gain)"],
+                               ['Window','BS',['Fs','Fc1','Fc2'],[48000,8400,13200],False,True,"txt","The attenuation at cutoff frequencies is fixed at 6 dB (half the passband gain)"], 
+                               ['Butterworth','LP',['Fs','Fc'],[48000,10800],True,True,"txt","The attenuation at cutoff frequencies is fixed at 3 dB (half the passband power)"],
+                               ['Butterworth','HP',['Fs','Fc'],[48000,10800],True,True,"txt","The attenuation at cutoff frequencies is fixed at 3 dB (half the passband power)"],
+                               ['Butterworth','BP',['Fs','Fc1','Fc2'],[48000,8400,13200],True,True,"txt","The attenuation at cutoff frequencies is fixed at 3 dB (half the passband power)"],
+                               ['Butterworth','BS',['Fs','Fc1','Fc2'],[48000,8400,13200],True,True,"txt","The attenuation at cutoff frequencies is fixed at 3 dB (half the passband power)"],
                                ['Elliptic','LP',['Fs','Fpass'],[48000,9600],True,True],
                                ['Elliptic','HP',['Fs','Fpass'],[48000,14400],True,True],
                                ['Elliptic','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True],
@@ -79,23 +79,22 @@ class Window(QtGui.QWidget):
         else:
             filtname=self.dm.combo_FilterMethod_IIR.currentText()
         print filtname + resp_type
-        j=0
-        i=0
+        j=i=0
         while i==0:
             print self.chose_design_list[j][0]+":"+self.chose_design_list[j][1]
             if self.chose_design_list[j][0]==filtname and self.chose_design_list[j][1]==resp_type:
                 i=1
-                chosen=self.chose_design_list[j][2:]
+                chosen=self.chose_design_list[j][2:5]
                 print chosen
             j=j+1
         print "-----------------------------------------"   
         self.rebild_window(chosen[0],chosen[1],chosen[2],chosen[3])
         
+        
     def rebild_window(self,liste=[],default=[],enMin=True,chekMan=True):
         
 
         self.fs.Load_txt(liste,default)
-
         self.fo.chekMinimal.setEnabled(enMin)
         self.fo.chekManual.setChecked(chekMan)
         
