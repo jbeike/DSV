@@ -17,6 +17,7 @@ class ResponseType(QtGui.QWidget):
         
         
     def initUI(self): 
+        
 
 
 
@@ -36,7 +37,7 @@ class ResponseType(QtGui.QWidget):
         self.group.addButton(self.radio_LP)
         self.group.addButton(self.radio_BP)
         self.group.addButton(self.radio_BS)
-        
+        self.get_selected_button
         
         """
         LAYOUT      
@@ -50,16 +51,30 @@ class ResponseType(QtGui.QWidget):
       
         self.setLayout(layout)
         
-        
-        
+ 
+         
+    def  get_selected_button(self):
+        if (self.radio_HP.isChecked()==True):
+            return "HP"
+        elif (self.radio_LP.isChecked()==True):
+            return "LP"
+        elif (self.radio_BP.isChecked()==True):
+            return "BP"
+        else :
+            return "BS"  
+
+          
+            
    
  
     
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     form = ResponseType()
+    
     form.show()
-   
+    i=form.get_selected_button()
+    print i
     app.exec_()
 
 
