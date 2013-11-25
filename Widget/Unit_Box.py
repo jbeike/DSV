@@ -60,13 +60,9 @@ class Unit_Box(QtGui.QWidget):
         self.setLayout(self.layout)
         
     def Load_txt(self,lab=[] ,default=[])  :
-        print "------------------------------------"
-        print self.lab_namen
+ 
         i=0;
-        print "len neu"+str(len(lab))+":"
-        print lab
-        print "len alt"+str(len(self.lab_namen))+":"
-        print self.lab_namen
+       
         if (len(self.lab_namen)>len(lab)):
             maximal=len(self.lab_namen)
             minimal=len(lab)
@@ -77,7 +73,7 @@ class Unit_Box(QtGui.QWidget):
         while (i<maximal):
             
             if (i>(len(lab)-1)):
-                print 'löschen'
+             
                 self.Loesche_elm(len(lab))
             elif (i>(len(self.lab_namen)-1)):
                 self.add_elm(i,lab[i],default[i])
@@ -89,12 +85,8 @@ class Unit_Box(QtGui.QWidget):
                     self.lab_namen[i]=lab[i]
                     self.default_werte[i]=default[i]
                     self.textfield[i].setText(str(default[i]))
-                    print str(i)+":"+self.labels[i].text()+":"+self.textfield[i].text()
+      
                    # print self.labels[i+1].text() + self.textfield[i+1].text()
-                else:
-                    print"Namen behalten, Wert behalten"
-                    print str(i)+":"+self.labels[i].text()+":"+self.textfield[i].text()
-                    
             i=i+1
             
        
