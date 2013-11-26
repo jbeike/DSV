@@ -26,6 +26,7 @@ class Unit_Box(QtGui.QWidget):
         super(Unit_Box, self).__init__()   
         self.lab_namen=lab
         self.labels= []
+        
        
         
         self.unit=[str(i) for i in unit]
@@ -115,6 +116,18 @@ class Unit_Box(QtGui.QWidget):
        print str(i)+":"+self.labels[i].text()+":"+self.textfield[i].text()
        self.layout.addWidget(self.labels[i],(i+1),0)
        self.layout.addWidget(self.textfield[i],(i+1),1)
+      
+    def get_elm(self):
+        
+        self.werte=len(self.textfield)*[1]
+        i=0
+        print "---"
+        print len(self.lab_namen)
+        while(i<len(self.textfield)):
+            self.werte[i]=self.textfield[i].text()
+            print self.werte[i]
+        return (self.combo_units.currentText(),self.lab_namen,self.werte) 
+         
  
     
 if __name__ == '__main__':
@@ -125,6 +138,8 @@ if __name__ == '__main__':
     form=Unit_Box(unit,lab,default)
     form.Load_txt(['a','b','c','d'],[1,2,3,10])
     form.Load_txt(['d','b','a'],[1,2,3])
+    i=form.get_elm()
+    print i
     form.show()
    
     app.exec_()

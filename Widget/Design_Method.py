@@ -55,7 +55,7 @@ class Design_Method(QtGui.QWidget):
         
         self.combo_FilterMethod_IIR=QtGui.QComboBox(self)
         self.combo_FilterMethod_IIR.addItems(self.list_FilterMethod_IIR)
-     
+        
         
         """
         SIGNALE       
@@ -90,7 +90,16 @@ class Design_Method(QtGui.QWidget):
     def sel_FilterMethod_IIR(self):
         
     
-        self.radio_IIR.setChecked(True)    
+        self.radio_IIR.setChecked(True)   
+        
+    def  get_FilterMethod(self):
+        if self.radio_FIR.isChecked()==True:
+            return self.combo_FilterMethod_FIR.currentText()
+        else:
+            return self.combo_FilterMethod_IIR.currentText()
+            
+    
+     
    
  
     
