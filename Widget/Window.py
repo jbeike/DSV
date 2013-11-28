@@ -22,7 +22,7 @@ class Window(QtGui.QWidget):
     def initUI(self): 
         
         self.ch_para=Chose_Param.Chose_Param();
-        self.but_design=QtGui.QPushButton("text",self)
+        self.but_design=QtGui.QPushButton("DESIGN",self)
             
         """
         LAYOUT      
@@ -40,15 +40,17 @@ class Window(QtGui.QWidget):
         self.connect(self.but_design,SIGNAL('clicked()'),self.but_press)
         
     def but_press(self):
-        """
-         ['Least-squares','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],False,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]]
-        (filtermethode,[[Frequenz_Namen],[Frequenz_Werte]],[Magnitude_Specificationen(je nach dem...)],[Options(je nach dem...)]])
-        """
-        print "Button clicked"
-        # start_busy()
+
+        a=self.ch_para.get()
+        print "-------------------------"
+        print a
+        print "-------------------------"
+    
+    
+            
+            
+            
         
-        paramlist=[[['Fs','Fpass','Fstop'],[48000,9600,12000]],[["Wpass","Wstop"],[1,1]]]
-        filter = fd_mock.fd_1(paramlist)
         # stop_busy()
         #self.plotter.draw(filter)
         

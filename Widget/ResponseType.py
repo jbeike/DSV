@@ -37,7 +37,6 @@ class ResponseType(QtGui.QWidget):
         self.group.addButton(self.radio_LP)
         self.group.addButton(self.radio_BP)
         self.group.addButton(self.radio_BS)
-        self.get_selected_button
         
         """
         LAYOUT      
@@ -53,7 +52,10 @@ class ResponseType(QtGui.QWidget):
         
  
          
-    def  get_selected_button(self):
+    def  get(self):
+        """
+        Rückgabe des aktuellen Filtertyps
+        """
         if (self.radio_HP.isChecked()==True):
             return "HP"
         elif (self.radio_LP.isChecked()==True):
