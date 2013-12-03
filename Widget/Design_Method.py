@@ -83,20 +83,21 @@ class Design_Method(QtGui.QWidget):
         
         
     def sel_FilterMethod_FIR(self):
-       
    
         self.radio_FIR.setChecked(True)
         
     def sel_FilterMethod_IIR(self):
-        
-    
+
         self.radio_IIR.setChecked(True)   
         
-    def  get_FilterMethod(self):
+    def  get(self):
+        """
+        Rückgabe der Ausgewählten Filtermethode
+        """
         if self.radio_FIR.isChecked()==True:
-            return self.combo_FilterMethod_FIR.currentText()
+            return str(self.combo_FilterMethod_FIR.currentText())
         else:
-            return self.combo_FilterMethod_IIR.currentText()
+            return str(self.combo_FilterMethod_IIR.currentText())
             
     
      

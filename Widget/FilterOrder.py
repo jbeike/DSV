@@ -47,19 +47,34 @@ class FilterOrder(QtGui.QWidget):
         self.connect(self.chekMinimal,SIGNAL('clicked()'),self.enabled_txt)
         
     def enabled_txt(self):
+        """
+        nur wenn MANUELL ausgewählt ist kann etw. eingegeben werden
+        """
 
         if self.chekManual.isChecked()==True:
             self.txtManual.setEnabled(True)
         else:
             self.txtManual.setEnabled(False)     
-        
-
+   
+   def get(self):
+         """
+         Rückgabe der aktuell ausgewählten Filterordnung
+         """
+         if self.chekManual.isChecked()==False:
+             return "min"
+         else :
+             return int(self.txtManual.text())
          
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     form = FilterOrder()
     form.show()
-   
+    form.chekManual.setChecked(True)
+    t=form.get()
+    print t
+    form.chekMinimal.setChecked(True)
+    t=form.get()
+    print t
     app.exec_()
 
 
