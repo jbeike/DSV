@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 """
 Auswahl von DesignTyp,FilterMethode und Window 
 @author: juliabeike

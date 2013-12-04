@@ -5,7 +5,7 @@ MAINWINDOW
 
 @author: beike
 """
-import Design_Method,ResponseType,FilterOrder,Frequency_Specification,Unit_Box,Txt_Box
+import Design_Method,ResponseType,FilterOrder,Unit_Box,Txt_Box
 import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import SIGNAL
@@ -39,10 +39,14 @@ class Chose_Param(QtGui.QWidget):
                                ['Elliptic','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
                                ['Elliptic','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
                                ['Elliptic','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]],
-                               ['Chebyshev','LP',['Fs','Fpass'],[48000,9600],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
-                               ['Chebyshev','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
-                               ['Chebyshev','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
-                               ['Chebyshev','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]]
+                               ['Chebychev 1','LP',['Fs','Fpass'],[48000,9600],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
+                               ['Chebychev 1','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
+                               ['Chebychev 1','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
+                               ['Chebychev 1','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]],
+                               ['Chebychev 2','LP',['Fs','Fpass'],[48000,9600],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
+                               ['Chebychev 2','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
+                               ['Chebychev 2','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
+                               ['Chebychev 2','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]]
                                 )                                               
         
         

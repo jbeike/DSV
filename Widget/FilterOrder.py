@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 """
 Auswahl von DesignTyp,FilterMethode und Window 
 @author: juliabeike
@@ -56,7 +56,7 @@ class FilterOrder(QtGui.QWidget):
         else:
             self.txtManual.setEnabled(False)     
    
-   def get(self):
+    def get(self):
          """
          Rückgabe der aktuell ausgewählten Filterordnung
          """

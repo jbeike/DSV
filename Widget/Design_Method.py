@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Auswahl von DesignTyp,FilterMethode 
 @author: Julia Beike
@@ -20,7 +21,8 @@ class Design_Method(QtGui.QWidget):
     
       
         
-        self.list_FilterMethod_IIR=["Butterworth","Chebyshev","Elliptic"]
+        self.list_FilterMethod_IIR=["Butterworth","Chebychev 1", 
+        "Chebychev 2", "Elliptic"]
 
         self.list_FilterMethod_FIR=['Equiripple','Least-squares','Window']
         
@@ -41,7 +43,7 @@ class Design_Method(QtGui.QWidget):
         self.group.addButton(self.radio_IIR)
         
         """
-        Combobox zur Auswahl des Filtermethode FFT       
+        Combobox zur Auswahl des Filtermethode FIR       
         """
         
         self.combo_FilterMethod_FIR=QtGui.QComboBox(self)
@@ -50,7 +52,7 @@ class Design_Method(QtGui.QWidget):
         
         
         """
-        Combobox zur Auswahl des Filtermethode IRR       
+        Combobox zur Auswahl des Filtermethode IIR       
         """
         
         self.combo_FilterMethod_IIR=QtGui.QComboBox(self)

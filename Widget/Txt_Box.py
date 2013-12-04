@@ -135,20 +135,20 @@ class Txt_Box(QtGui.QWidget):
         del self.textfield[i]  
         
     def add_elm(self,i,lab_name,defaultw)  :
-         """
+        """
         elm an pos i wird angefügt (in labels und textfield)
         """
-       self.labels.append(QtGui.QLabel(self))
-       self.lab_namen.append(lab_name)
-       self.default_werte.append(defaultw)
-       self.textfield.append(QtGui.QLineEdit(str (defaultw)))
-       self.labels[i].setText(lab_name)
-       #print str(i)+":"+self.labels[i].text()+":"+self.textfield[i].text()
-       self.layout.addWidget(self.labels[i],(i+1),0)
-       self.layout.addWidget(self.textfield[i],(i+1),1)
+        self.labels.append(QtGui.QLabel(self))
+        self.lab_namen.append(lab_name)
+        self.default_werte.append(defaultw)
+        self.textfield.append(QtGui.QLineEdit(str (defaultw)))
+        self.labels[i].setText(lab_name)
+        #print str(i)+":"+self.labels[i].text()+":"+self.textfield[i].text()
+        self.layout.addWidget(self.labels[i],(i+1),0)
+        self.layout.addWidget(self.textfield[i],(i+1),1)
      
     def get(self):
-         """
+        """
         Rückgabe der Parameter
         """
         namen=[]
