@@ -59,7 +59,7 @@ class Chose_Param(QtGui.QWidget):
         self.dm=Design_Method.Design_Method()
         self.fo=FilterOrder.FilterOrder()
         self.fs=Unit_Box.Unit_Box(["Hz","Normalize 0 to 1","kHz","MHz","GHz"],['Fs','Fpass','Fstop'],[48000,9600,12000])
-        
+       
         self.ms_tex=QtGui.QLabel(self)
         self.ms_tex.setText("Enter a weight value for each band below")
         self.ms_ub=Unit_Box.Unit_Box(["DB","Squared"],["Apass","Astop"],[1,80])

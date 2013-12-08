@@ -4,7 +4,7 @@ Created on Tue Nov 26 10:57:30 2013
 
 @author: beike
 """
-import Chose_Param,fd_mock, design_selector
+import Chose_Param,fd_mock, design_selector, plotter_Hf
 import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import SIGNAL
@@ -14,23 +14,22 @@ class Window(QtGui.QWidget):
     
     def __init__(self):
         super(Window, self).__init__()        
-        self.initUI()
-    
-
-        
+        self.initUI()     
         
     def initUI(self): 
         
         self.ch_para=Chose_Param.Chose_Param();
         self.but_design=QtGui.QPushButton("DESIGN",self)
+        self.pltHf = plotter_Hf.PlotHf() # neu
             
         """
         LAYOUT      
         """
         
         self.layout=QtGui.QGridLayout()
-        self.layout.addWidget(self.ch_para)
-        self.layout.addWidget(self.but_design)
+        self.layout.addWidget(self.ch_para,0,0)
+        self.layout.addWidget(self.but_design,1,0)
+        self.layout.addWidget(self.pltHf,0,1) # neu
        
         self.setLayout(self.layout)
         """
@@ -45,12 +44,13 @@ class Window(QtGui.QWidget):
         print "-------------------------"
         print a
         print "-------------------------"
-        status = design_selector.select(a)
-        print status
-           
+        coeffs = design_selector.select(a)
+        print coeffs[0]
         
+        self.pltHf.pass_param(coeffs)
+        self.pltHf.on_draw()
         # stop_busy()
-        #self.plotter.draw(filter)
+        # self.plotter.draw(filter)
         
        # items=(self.ch_para.dm.get_FilterMethod,self.ch_para.fs)
         #print self.ch_para.dm.get_FilterMethod()

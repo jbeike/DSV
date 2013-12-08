@@ -50,7 +50,7 @@ class ResponseType(QtGui.QWidget):
       
         self.setLayout(layout)
         
- 
+
          
     def  get(self):
         """
@@ -68,7 +68,6 @@ class ResponseType(QtGui.QWidget):
           
             
    
- 
     
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

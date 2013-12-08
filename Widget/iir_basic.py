@@ -33,8 +33,8 @@ def iir_basic(a):
 #        F_stop = 2 * a[3][2][2]/fs
         F_stop = 0.8
         print('fs','fpass','fstop',fs, F_pass, F_stop)
-        A_pass = a[4][2][1]
-        A_stop = 60
+        A_pass = a[4][2][0]
+        A_stop = a[4][2][1]
 #        A_stop = a[4][2][2]
         print('A_pass', 'A_stop', A_pass, A_stop)
 #        W = a[5]
