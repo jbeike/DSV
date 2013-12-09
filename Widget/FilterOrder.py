@@ -61,9 +61,10 @@ class FilterOrder(QtGui.QWidget):
          Rückgabe der aktuell ausgewählten Filterordnung
          """
          if self.chekManual.isChecked()==False:
-             return "min"
+             ordn= "min"
          else :
-             return int(self.txtManual.text())
+             ordn=float(self.txtManual.text())
+         return {"Order": ordn}
          
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)

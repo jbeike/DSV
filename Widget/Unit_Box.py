@@ -20,9 +20,9 @@ import sys
 from PyQt4 import QtGui,QtCore
 from PyQt4.QtCore import SIGNAL
 
-class Unit_Box(QtGui.QWidget):
+class Unit_Box(QtGui.QWidget,):
     
-    def __init__(self, unit=[],lab=[] ,default=[]):
+    def __init__(self, unit=[],lab=[] ,default=[],name=""):
         
         """
         Initialisierung
@@ -34,7 +34,7 @@ class Unit_Box(QtGui.QWidget):
         super(Unit_Box, self).__init__()   
         self.lab_namen=lab
         self.labels= []
-        
+        self.name=name
        
         
         self.unit=[str(i) for i in unit]
@@ -146,16 +146,17 @@ class Unit_Box(QtGui.QWidget):
         """
         Rückgabe der Parameter
         """
-        namen=[]
-        data=[]
+        dic={"Einheit"+self.name:str(self.combo_units.currentText())}
+        #namen=[]
+        #data=[]
         i=0
         while (i<len(self.lab_namen)):
-            
-            namen.append(self.lab_namen[i])
-            data.append(int(self.textfield[i].text()))
+            dic.update({self.lab_namen[i]:float(self.textfield[i].text())})
+            #namen.append(self.lab_namen[i])
+            #data.append(float(self.textfield[i].text()))
             i=i+1
-
-        return[str(self.combo_units.currentText()),namen,data]
+        print dic
+        return dic
          
  
     
@@ -164,7 +165,7 @@ if __name__ == '__main__':
     lab=['a','b','c',]
     default=[4,5,6]
     app = QtGui.QApplication(sys.argv)
-    form=Unit_Box(unit,lab,default)
+    form=Unit_Box(unit,lab,default,"TEST")
     form.Load_txt(['a','b','c','d'],[1,2,3,10])
     form.Load_txt(['d','b','a'],[1,2,3])
     i=form.get()

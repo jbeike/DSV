@@ -97,10 +97,10 @@ class Design_Method(QtGui.QWidget):
         Rückgabe der Ausgewählten Filtermethode
         """
         if self.radio_FIR.isChecked()==True:
-            return str(self.combo_FilterMethod_FIR.currentText())
+            a= str(self.combo_FilterMethod_FIR.currentText())
         else:
-            return str(self.combo_FilterMethod_IIR.currentText())
-            
+            a= str(self.combo_FilterMethod_IIR.currentText())
+        return{"Design_Methode": a}  
     
      
    

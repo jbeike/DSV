@@ -31,7 +31,7 @@ class ResponseType(QtGui.QWidget):
         self.radio_LP=QtGui.QRadioButton("Lowpass",self)
         self.radio_BP=QtGui.QRadioButton("Bandpass",self)
         self.radio_BS=QtGui.QRadioButton("Bandstop",self)
-        self.radio_HP.setChecked(True)
+        self.radio_LP.setChecked(True)
         self.group=QtGui.QButtonGroup()
         self.group.addButton(self.radio_HP)
         self.group.addButton(self.radio_LP)
@@ -56,15 +56,17 @@ class ResponseType(QtGui.QWidget):
         """
         Rückgabe des aktuellen Filtertyps
         """
+        
         if (self.radio_HP.isChecked()==True):
-            return "HP"
+            a= "HP"
         elif (self.radio_LP.isChecked()==True):
-            return "LP"
+            a= "LP"
         elif (self.radio_BP.isChecked()==True):
-            return "BP"
+            a= "BP"
         else :
-            return "BS"  
-
+            a= "BS"
+            
+        return{"Response Type":a}
           
             
    
@@ -72,10 +74,8 @@ class ResponseType(QtGui.QWidget):
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     form = ResponseType()
-    
-    form.show()
-    i=form.get_selected_button()
-    print i
+    a=form.get()
+    print a
     app.exec_()
 
 

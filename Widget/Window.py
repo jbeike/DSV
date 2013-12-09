@@ -25,7 +25,7 @@ class Window(QtGui.QWidget):
         """
         LAYOUT      
         """
-        
+        self.ch_para.setMaximumWidth(250)
         self.layout=QtGui.QGridLayout()
         self.layout.addWidget(self.ch_para,0,0)
         self.layout.addWidget(self.but_design,1,0)
@@ -42,13 +42,15 @@ class Window(QtGui.QWidget):
 
         a = self.ch_para.get()
         print "-------------------------"
+        print "-------------------------"
         print a
         print "-------------------------"
-        coeffs = design_selector.select(a)
-        print coeffs[0]
+        print "-------------------------"
+        #coeffs = design_selector.select(a)
+        #print coeffs[0]
         
-        self.pltHf.pass_param(coeffs)
-        self.pltHf.on_draw()
+       # self.pltHf.pass_param(coeffs)
+        #self.pltHf.on_draw()
         # stop_busy()
         # self.plotter.draw(filter)
         

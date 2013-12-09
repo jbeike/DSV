@@ -20,11 +20,11 @@ class Chose_Param(QtGui.QWidget):
         #Alle "Eigenschaften" der verschiedenen Filtertypen
         self.chose_design_list=(
                                ['Least-squares','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],False,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]],
-                               ['Least-squares','HP',['Fs','Fstop','Fpass'],[48000,9600,12000],False,True,"tb",["Enter a weight value for each band below",["Wstop","Wpass"],[1,1]]],
+                               ['Least-squares','HP',['Fs','Fpass','Fstop'],[48000,9600,12000],False,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]],
                                ['Least-squares','BP',['Fs','Fstop1','Fpass1','Fstop2','Fpass2'],[48000,7200,9600,12000,14400],False,True,"tb",["Enter a weight value for each band below",["Wstop1","Wpass","Wstop2"],[1,1,1]]],
                                ['Least-squares','BS',['Fs','Fpass1','Fstop1','Fpass2','Fstop2'],[48000,7200,9600,12000,14400],False,True,"tb",["Enter a weight value for each band below",["Wpass1","Wstop","Wpass2"],[1,1,1]]],
                                ['Equiripple','LP',['Fs','Fpass','Fstop'],[48000,9600,12000],True,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]],
-                               ['Equiripple','HP',['Fs','Fstop','Fpass'],[48000,9600,12000],True,True,False,True,"tb",["Enter a weight value for each band below",["Wstop","Wpass"],[1,1]]],
+                               ['Equiripple','HP',['Fs','Fpass','Fstop'],[48000,9600,12000],True,True,"tb",["Enter a weight value for each band below",["Wpass","Wstop"],[1,1]]],
                                ['Equiripple','BP',['Fs','Fstop1','Fpass1','Fstop2','Fpass2'],[48000,7200,9600,12000,14400],True,True,"tb",["Enter a weight value for each band below",["Wstop1","Wpass","Wstop2"],[1,1,1]]],
                                ['Equiripple','BS',['Fs','Fpass1','Fstop1','Fpass2','Fstop2'],[48000,7200,9600,12000,14400],True,True,"tb",["Enter a weight value for each band below",["Wpass1","Wstop","Wpass2"],[1,1,1]]],      
                                ['Window','LP',['Fs','Fc'],[48000,10800],False,True,"txt","The attenuation at cutoff frequencies is fixed at 6 dB (half the passband gain)"],
@@ -36,15 +36,15 @@ class Chose_Param(QtGui.QWidget):
                                ['Butterworth','BP',['Fs','Fc1','Fc2'],[48000,8400,13200],True,True,"txt","The attenuation at cutoff frequencies is fixed at 3 dB (half the passband power)"],
                                ['Butterworth','BS',['Fs','Fc1','Fc2'],[48000,8400,13200],True,True,"txt","The attenuation at cutoff frequencies is fixed at 3 dB (half the passband power)"],
                                ['Elliptic','LP',['Fs','Fpass'],[48000,9600],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
-                               ['Elliptic','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
+                               ['Elliptic','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
                                ['Elliptic','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
                                ['Elliptic','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]],
                                ['Chebychev 1','LP',['Fs','Fpass'],[48000,9600],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
-                               ['Chebychev 1','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
+                               ['Chebychev 1','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
                                ['Chebychev 1','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
                                ['Chebychev 1','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]],
                                ['Chebychev 2','LP',['Fs','Fpass'],[48000,9600],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
-                               ['Chebychev 2','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Astop","Apass"],[80,1]]],
+                               ['Chebychev 2','HP',['Fs','Fpass'],[48000,14400],True,True,"ub",[["DB","Squared"],["Apass","Astop"],[1,80]]],
                                ['Chebychev 2','BP',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Astopp1","Apass","Astop2"],[60,1,80]]],
                                ['Chebychev 2','BS',['Fs','Fpass1','Fpass2'],[48000,9600,12000],True,True,"ub",[["DB","Squared"],["Apass1","Astop","Apass2"],[5,60,1]]]
                                 )                                               
@@ -58,11 +58,12 @@ class Chose_Param(QtGui.QWidget):
         self.rs=ResponseType.ResponseType() 
         self.dm=Design_Method.Design_Method()
         self.fo=FilterOrder.FilterOrder()
-        self.fs=Unit_Box.Unit_Box(["Hz","Normalize 0 to 1","kHz","MHz","GHz"],['Fs','Fpass','Fstop'],[48000,9600,12000])
+        self.fs=Unit_Box.Unit_Box(["Hz","Normalize 0 to 1","kHz","MHz","GHz"],['Fs','Fpass','Fstop'],[48000,9600,12000],"Frequenz")
        
         self.ms_tex=QtGui.QLabel(self)
         self.ms_tex.setText("Enter a weight value for each band below")
-        self.ms_ub=Unit_Box.Unit_Box(["DB","Squared"],["Apass","Astop"],[1,80])
+        self.ms_tex.setWordWrap(True)
+        self.ms_ub=Unit_Box.Unit_Box(["DB","Squared"],["Apass","Astop"],[1,80],"Magnitude")
         self.ms_tb=Txt_Box.Txt_Box("Enter a weight value for each band below",["Wpass","Wstop"],[1,1])
         self.ms_last="tb"
         # alle Magnitude Widgets die nicht benötigt werden sind unsichtbar, aber trotzdem immer da!!
@@ -81,6 +82,7 @@ class Chose_Param(QtGui.QWidget):
         self.layout.addWidget(self.ms_tex,4,0)
         self.layout.addWidget(self.ms_tb,5,0)
         self.layout.addWidget(self.ms_ub,6,0)
+        
         self.setLayout(self.layout)
         """
         SIGNAL
@@ -99,19 +101,22 @@ class Chose_Param(QtGui.QWidget):
         je nach Filtermethode und Frequenz werden die Werte der Widgets do,ds  neu gesetzt bzw bei ms auch noch die Sichtbarkeit verändert
         """
         #print "-----------------------------------------"
-        resp_type=self.rs.get()
+        a=self.rs.get()
+        resp_type=a["Response Type"]
         if self.dm.radio_FIR.isChecked()==True: 
             filtname=self.dm.combo_FilterMethod_FIR.currentText()
         else:
             filtname=self.dm.combo_FilterMethod_IIR.currentText()
-        #print filtname + resp_type
+        print filtname
+        print resp_type
         j=i=0
         while i==0:
            # print self.chose_design_list[j][0]+":"+self.chose_design_list[j][1]
+            print j
             if self.chose_design_list[j][0]==filtname and self.chose_design_list[j][1]==resp_type:
                 i=1
                 chosen=self.chose_design_list[j][2:]
-                #print chosen
+                print chosen
             j=j+1
         #print "-----------------------------------------"   
         self.rebild_frequ_filtOrd(chosen[0],chosen[1],chosen[2],chosen[3])
@@ -160,18 +165,21 @@ class Chose_Param(QtGui.QWidget):
         Gibt die aktuell ausgewählten Parameter zurrück
         """
         
-        ret=[]
-        ret.append(self.rs.get())
-        ret.append(self.dm.get())
-        ret.append(self.fo.get())
-        ret.append(self.fs.get())
+        ret={}
+        ret.update(self.rs.get())
+        print ret
+        ret.update(self.dm.get())
+        print ret
+        ret.update(self.fo.get())
+        print ret
+        ret.update(self.fs.get())
          
 
         if self.ms_last=="ub":
-            ret.append( self.ms_ub.get())
+            ret.update( self.ms_ub.get())
         if self.ms_last=="tb" :
-            ret.append( self.ms_tb.get())
-    
+            ret.update( self.ms_tb.get())
+        print ret
         return ret  
         
         
@@ -183,6 +191,7 @@ if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     form = Chose_Param()
     form.show()
+    form.get()
    
     app.exec_()
 

@@ -47,6 +47,7 @@ class Txt_Box(QtGui.QWidget):
         self.layout=QtGui.QGridLayout()
         self.text=QtGui.QLabel(self)
         self.text.setText(str(self.txt))
+        self.text.setWordWrap(True)
         self.WLayout=QtGui.QVBoxLayout()
         self.WLayout.addWidget(self.text)
         """
@@ -140,6 +141,7 @@ class Txt_Box(QtGui.QWidget):
         """
         self.labels.append(QtGui.QLabel(self))
         self.lab_namen.append(lab_name)
+        
         self.default_werte.append(defaultw)
         self.textfield.append(QtGui.QLineEdit(str (defaultw)))
         self.labels[i].setText(lab_name)
@@ -151,16 +153,18 @@ class Txt_Box(QtGui.QWidget):
         """
         Rückgabe der Parameter
         """
-        namen=[]
-        data=[]
+        dic={}
+        #namen=[]
+       # data=[]
         i=0
         while (i<len(self.lab_namen)):
-            
-            namen.append(self.lab_namen[i])
-            data.append(int(self.textfield[i].text()))
+            dic.update({self.lab_namen[i]:float(self.textfield[i].text())})
+            #namen.append(self.lab_namen[i])
+            #data.append(float(self.textfield[i].text()))
             i=i+1
-
-        return([namen,data])
+        print" TXTBOX"
+        print dic
+        return dic
     
 if __name__ == '__main__':
     text="asdfa"
