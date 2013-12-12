@@ -12,9 +12,10 @@ import numpy as np
 # ['LP', 'Elliptic', 10, ['Hz', ['Fs', 'Fpass'], [48000, 14400]], ['DB', ['Apass', 'Astop'], [1, 80]]]
 def iir_basic(a):
   
-        filt_type = a[0]
+        filt_type = a["Response Type"]
+        
         print('filt_type', filt_type)
-        design_method = a[1]
+        design_method = a["Design_Methode"]
         if design_method == 'Elliptic':
             ftype = 'ellip'
         elif design_method == 'Chebychev 1':
@@ -26,21 +27,21 @@ def iir_basic(a):
 #        else: raise_exception
             
         print('design_method', design_method)
-        N = a[2]
+        N = a['Order']
         print('order',N)
-        fs = a[3][2][0]
-        F_pass = 2 * a[3][2][1]/fs
+        fs = a["Fs"]
+        F_pass = 2 * a["Fpass"]/fs
 #        F_stop = 2 * a[3][2][2]/fs
         F_stop = 0.8
         print('fs','fpass','fstop',fs, F_pass, F_stop)
-        A_pass = a[4][2][0]
-        A_stop = a[4][2][1]
+        A_pass = a["Apass"]
+        A_stop = a["Astop"]
 #        A_stop = a[4][2][2]
         print('A_pass', 'A_stop', A_pass, A_stop)
 #        W = a[5]
 #        print('W',W)
         
-        if a[2] == 'min':
+        if N == 'min':
             b,a = sig.iirdesign(F_pass, F_stop, A_pass, A_stop, analog = False, 
                                 ftype = ftype, output = 'ba')            
         else:
@@ -51,5 +52,5 @@ def iir_basic(a):
             elif ftype == 'cheby2':
                 b,a = sig.cheby2(N, A_stop, [F_pass, F_stop], btype ='low' )
             elif ftype == 'butter':
-                b,a = sig.butter(N, F_pass, btype ='low' )
+                b,a = sig.butter(N, (2 * a["Fc"]/fs), btype ='low' )
         return b, a

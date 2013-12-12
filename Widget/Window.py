@@ -29,8 +29,7 @@ class Window(QtGui.QWidget):
         self.layout=QtGui.QGridLayout()
         self.layout.addWidget(self.ch_para,0,0)
         self.layout.addWidget(self.but_design,1,0)
-        self.layout.addWidget(self.pltHf,0,1) # neu
-       
+#        self.layout.addWidget(self.pltHf,0,1) # open in same window
         self.setLayout(self.layout)
         """
         SIGNAL
@@ -46,13 +45,14 @@ class Window(QtGui.QWidget):
         print a
         print "-------------------------"
         print "-------------------------"
-        #coeffs = design_selector.select(a)
-        #print coeffs[0]
         
-       # self.pltHf.pass_param(coeffs)
-        #self.pltHf.on_draw()
-        # stop_busy()
-        # self.plotter.draw(filter)
+        coeffs = design_selector.select(a)
+        print coeffs[0]
+        
+        self.pltHf.pass_param(coeffs)
+        self.pltHf.on_draw()
+        self.pltHf.show() # open in separate Window
+        #self.plotter.draw(filter)
         
        # items=(self.ch_para.dm.get_FilterMethod,self.ch_para.fs)
         #print self.ch_para.dm.get_FilterMethod()
