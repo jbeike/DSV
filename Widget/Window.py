@@ -4,7 +4,7 @@ Created on Tue Nov 26 10:57:30 2013
 
 @author: beike
 """
-import Chose_Param,fd_mock, design_selector, plotter_Hf
+import Chose_Param,fd_mock, design_selector, plotter_Hf,Graphics
 import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import SIGNAL
@@ -48,10 +48,8 @@ class Window(QtGui.QWidget):
         
         coeffs = design_selector.select(a)
         print coeffs[0]
-        
-        self.pltHf.pass_param(coeffs)
-        self.pltHf.on_draw()
-        self.pltHf.show() # open in separate Window
+        self.graf=plotter_Hf.all_Graphs(coeffs)
+        self.graf.show() # open in separate Window
         #self.plotter.draw(filter)
         
        # items=(self.ch_para.dm.get_FilterMethod,self.ch_para.fs)

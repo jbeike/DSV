@@ -27,27 +27,16 @@ class ResponseType(QtGui.QWidget):
 
 
        # self.group.exclusive(True)
-        self.radio_HP=QtGui.QRadioButton("Highpass",self)
-        self.radio_LP=QtGui.QRadioButton("Lowpass",self)
-        self.radio_BP=QtGui.QRadioButton("Bandpass",self)
-        self.radio_BS=QtGui.QRadioButton("Bandstop",self)
-        self.radio_LP.setChecked(True)
-        self.group=QtGui.QButtonGroup()
-        self.group.addButton(self.radio_HP)
-        self.group.addButton(self.radio_LP)
-        self.group.addButton(self.radio_BP)
-        self.group.addButton(self.radio_BS)
-        
+        self.combo=QtGui.QComboBox(self)
+        self.combo.addItems(["Lowpass","Highpass","Bandpass","Bandstop"])
+
         """
         LAYOUT      
         """
         
         layout=QtGui.QGridLayout()
-        layout.addWidget(self.radio_HP,0,0)
-        layout.addWidget(self.radio_LP,1,0)
-        layout.addWidget(self.radio_BP,2,0)
-        layout.addWidget(self.radio_BS,3,0)
-      
+        layout.addWidget( self.combo,0,0)
+
         self.setLayout(layout)
         
 
@@ -56,16 +45,10 @@ class ResponseType(QtGui.QWidget):
         """
         Rückgabe des aktuellen Filtertyps
         """
-        
-        if (self.radio_HP.isChecked()==True):
-            a= "HP"
-        elif (self.radio_LP.isChecked()==True):
-            a= "LP"
-        elif (self.radio_BP.isChecked()==True):
-            a= "BP"
-        else :
-            a= "BS"
-            
+        dic={"Lowpass":"LP","Highpass":"HP","Bandpass":"BP","Bandstop":"BS"}
+        n=self.combo.currentText()
+        print n
+        a=dic[str(n)]
         return{"Response Type":a}
           
             
@@ -74,6 +57,7 @@ class ResponseType(QtGui.QWidget):
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     form = ResponseType()
+    form.show()
     a=form.get()
     print a
     app.exec_()

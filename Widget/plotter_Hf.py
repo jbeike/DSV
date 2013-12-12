@@ -22,7 +22,26 @@ N_FFT = 2048 # FFT length for freqz
 #
 
 
-class PlotHf(QtGui.QMainWindow):
+class all_Graphs(QtGui.QWidget):
+    def __init__(self,coeffs):
+        QtGui.QWidget.__init__(self)
+        tab_widget = QtGui.QTabWidget()
+        Betr=PlotHf()
+        pltHf=PlotHf()
+        pltHf.pass_param(coeffs)
+        pltHf.on_draw()
+        tab_widget.addTab(Betr, "DEMO")
+        tab_widget.addTab(pltHf, "Betragsfrequenzgang")
+        
+        vbox = QtGui.QVBoxLayout()
+        vbox.addWidget(tab_widget)
+        
+        self.setLayout(vbox)
+        
+        
+        
+        
+class PlotHf(QtGui.QWidget):
 
     def __init__(self):        
         parent = super(PlotHf, self).__init__() 
@@ -36,21 +55,20 @@ class PlotHf(QtGui.QMainWindow):
         self.on_draw()
 
     def create_main_frame(self):
-        self.main_frame = QtGui.QWidget()
-      
+   
         # Create the mpl Figure and FigCanvas objects. 
         # 5x4 inches, 100 dots-per-inch
         #
         self.dpi = 100
         self.fig = Figure((5.0, 4.0), dpi=self.dpi)
         self.canvas = FigureCanvas(self.fig)
-        self.canvas.setParent(self.main_frame)
+        self.canvas.setParent(self)
         
         self.axes = self.fig.add_subplot(111)
         
         # Create the navigation toolbar, tied to the canvas
         #
-        self.mpl_toolbar = NavigationToolbar(self.canvas, self.main_frame)
+        self.mpl_toolbar = NavigationToolbar(self.canvas, self)
         
         # Other GUI controls: SIGNAL definitions and connections to SLOTS
         # 
@@ -85,8 +103,7 @@ class PlotHf(QtGui.QMainWindow):
         vbox.addLayout(hbox1)
 #        vbox.addLayout(hbox2)
           
-        self.main_frame.setLayout(vbox)
-        self.setCentralWidget(self.main_frame)
+        self.setLayout(vbox)
 #        self.QtGui.QMainWindow.setCentralWidget(self.main_frame)
         
     def pass_param(self, coeffs = (1,1)):

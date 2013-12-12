@@ -30,77 +30,52 @@ class Design_Method(QtGui.QWidget):
 
 
         """
-        Radio Buttons zur Auswahl des Filtertyps        
+        ComboBox zur Auswahl des Filtertyps        
         """
-       
-        
-       # self.group.exclusive(True)
-        self.radio_FIR=QtGui.QRadioButton("FIR",self)
-        self.radio_IIR=QtGui.QRadioButton("IIR",self)
-        self.radio_FIR.setChecked(True)
-        self.group=QtGui.QButtonGroup()
-        self.group.addButton(self.radio_FIR)
-        self.group.addButton(self.radio_IIR)
+        self.combo_Filtertyp=QtGui.QComboBox(self)
+        self.combo_Filtertyp.addItems(["IIR","FIR"])
         
         """
         Combobox zur Auswahl des Filtermethode FIR       
         """
         
-        self.combo_FilterMethod_FIR=QtGui.QComboBox(self)
-        self.combo_FilterMethod_FIR.addItems(self.list_FilterMethod_FIR)
+        self.combo_FilterMethod=QtGui.QComboBox(self)
+        self.combo_FilterMethod.addItems(self.list_FilterMethod_IIR)
 
-        
-        
-        """
-        Combobox zur Auswahl des Filtermethode IIR       
-        """
-        
-        self.combo_FilterMethod_IIR=QtGui.QComboBox(self)
-        self.combo_FilterMethod_IIR.addItems(self.list_FilterMethod_IIR)
-        
-        
+
         """
         SIGNALE       
         """
 
-        self.connect(self.combo_FilterMethod_FIR,SIGNAL('activated(QString)'),self.sel_FilterMethod_FIR)
-
-        self.connect(self.combo_FilterMethod_IIR,SIGNAL('activated(QString)'),self.sel_FilterMethod_IIR)
+        self.connect(self.combo_Filtertyp,SIGNAL('activated(QString)'),self.sel_FilterMethod)
         
         """
         LAYOUT      
         """
-        layout_FIR=QtGui.QHBoxLayout()
-        layout_FIR.addWidget(self.radio_FIR)
-        layout_FIR.addWidget(self.combo_FilterMethod_FIR)
-        layout_IIR=QtGui.QHBoxLayout()
-        layout_IIR.addWidget(self.radio_IIR)
-        layout_IIR.addWidget(self.combo_FilterMethod_IIR)
+
         layout=QtGui.QGridLayout()
-        layout.addWidget(self.radio_FIR,0,0)
-        layout.addWidget(self.radio_IIR,1,0)
-        layout.addWidget(self.combo_FilterMethod_FIR,0,1)
-        layout.addWidget(self.combo_FilterMethod_IIR,1,1)
+        layout.addWidget(self.combo_Filtertyp,0,0)
+        layout.addWidget(self.combo_FilterMethod,0,1)
+
         self.setLayout(layout)
         
         
-    def sel_FilterMethod_FIR(self):
-   
-        self.radio_FIR.setChecked(True)
-        
-    def sel_FilterMethod_IIR(self):
+    def sel_FilterMethod(self):
+        if  str(self.combo_Filtertyp.currentText())=="IIR":
+            self.combo_FilterMethod.clear()
+            self.combo_FilterMethod.addItems(self.list_FilterMethod_IIR)
+        else:
+            self.combo_FilterMethod.clear()
+            self.combo_FilterMethod.addItems(self.list_FilterMethod_FIR)
 
-        self.radio_IIR.setChecked(True)   
         
     def  get(self):
         """
         Rückgabe der Ausgewählten Filtermethode
         """
-        if self.radio_FIR.isChecked()==True:
-            a= str(self.combo_FilterMethod_FIR.currentText())
-        else:
-            a= str(self.combo_FilterMethod_IIR.currentText())
-        return{"Design_Methode": a}  
+        f=self.combo_Filtertyp.currentText()
+        a=self.combo_FilterMethod.currentText()
+        return{"Filtertyp":f,"Design_Methode": a}  
     
      
    

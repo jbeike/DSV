@@ -20,7 +20,7 @@ import sys
 from PyQt4 import QtGui,QtCore
 from PyQt4.QtCore import SIGNAL
 
-class Unit_Box(QtGui.QWidget,):
+class Unit_Box(QtGui.QWidget):
     
     def __init__(self, unit=[],lab=[] ,default=[],name=""):
         

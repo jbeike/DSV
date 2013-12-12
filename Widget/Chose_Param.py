@@ -88,14 +88,9 @@ class Chose_Param(QtGui.QWidget):
         SIGNAL
         """
          #wenn sich die Filtermethode oder der Filtertyp ändert wird chose_design_methode aufgerufen
-        self.connect(self.dm.combo_FilterMethod_FIR,SIGNAL('activated(QString)'),self.chose_design_methode)
-        self.connect(self.dm.combo_FilterMethod_IIR,SIGNAL('activated(QString)'),self.chose_design_methode)
-        self.connect(self.dm.radio_FIR,SIGNAL('clicked()'),self.chose_design_methode)
-        self.connect(self.dm.radio_IIR,SIGNAL('clicked()'),self.chose_design_methode)
-        self.connect(self.rs.radio_BP,SIGNAL('clicked()'),self.chose_design_methode)
-        self.connect(self.rs.radio_HP,SIGNAL('clicked()'),self.chose_design_methode)
-        self.connect(self.rs.radio_LP,SIGNAL('clicked()'),self.chose_design_methode)
-        self.connect(self.rs.radio_BS,SIGNAL('clicked()'),self.chose_design_methode)
+        self.connect(self.dm.combo_FilterMethod,SIGNAL('activated(QString)'),self.chose_design_methode)
+        self.connect(self.dm.combo_Filtertyp,SIGNAL('activated(QString)'),self.chose_design_methode)
+        
     def chose_design_methode(self):
         """
         je nach Filtermethode und Frequenz werden die Werte der Widgets do,ds  neu gesetzt bzw bei ms auch noch die Sichtbarkeit verändert
@@ -103,20 +98,14 @@ class Chose_Param(QtGui.QWidget):
         #print "-----------------------------------------"
         a=self.rs.get()
         resp_type=a["Response Type"]
-        if self.dm.radio_FIR.isChecked()==True: 
-            filtname=self.dm.combo_FilterMethod_FIR.currentText()
-        else:
-            filtname=self.dm.combo_FilterMethod_IIR.currentText()
-        print filtname
-        print resp_type
+       
+        filtname=self.dm.combo_FilterMethod.currentText()
         j=i=0
         while i==0:
            # print self.chose_design_list[j][0]+":"+self.chose_design_list[j][1]
-            print j
             if self.chose_design_list[j][0]==filtname and self.chose_design_list[j][1]==resp_type:
                 i=1
                 chosen=self.chose_design_list[j][2:]
-                print chosen
             j=j+1
         #print "-----------------------------------------"   
         self.rebild_frequ_filtOrd(chosen[0],chosen[1],chosen[2],chosen[3])
